@@ -1,134 +1,134 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".FlashCardActivity">
-
-    <!-- Horizontal guidelines -->
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/h_guideline1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.3" />
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/h_guideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.6" />
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/h_guideline3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="1" />
-
-    <LinearLayout
-        android:id="@+id/top_layout"
-        android:orientation="horizontal"
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="0sp"
-        android:gravity="end|center_vertical"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/h_guideline1" >
-        <TextView
-            android:id="@+id/operand1TextView"
-            android:layout_width="200sp"
-            android:layout_height="200sp"
-            android:layout_marginEnd="70sp"
-            android:text="@string/operand1"
-            android:gravity="center"
-            android:textSize="50sp" />
-    </LinearLayout>
+        android:layout_height="match_parent"
+        tools:context=".FlashCardActivity">
 
-    <LinearLayout
-        android:id="@+id/middle_layout"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="0sp"
-        android:gravity="end|center_vertical"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/h_guideline1"
-        app:layout_constraintBottom_toTopOf="@+id/h_guideline2" >
-        <TextView
-            android:id="@+id/operatorTextView"
-            android:layout_width="100sp"
-            android:layout_height="100sp"
-            android:text="@string/operator"
-            android:gravity="center"
-            android:textSize="50sp" />
-        <TextView
-            android:id="@+id/operand2TextView"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_marginEnd="70sp"
-            android:text="@string/operand2"
-            android:textSize="50sp"
-            android:gravity="center" />
-    </LinearLayout>
+        <!-- Horizontal guidelines -->
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/h_guideline1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.3" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/h_guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.6" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/h_guideline3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="1" />
 
-    <LinearLayout
-        android:id="@+id/bottom_layout"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="0sp"
-        android:gravity="center"
-        android:weightSum="1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/h_guideline2"
-        app:layout_constraintBottom_toTopOf="@+id/h_guideline3">
         <LinearLayout
-            android:orientation="vertical"
-            android:gravity="center"
+            android:id="@+id/top_layout"
+            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="0sp"
-            android:layout_weight="0.4" >
-            <Button
-                android:id="@+id/generateButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/generate"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.497"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.617" />
+            android:gravity="end|center_vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/h_guideline1" >
+            <TextView
+                android:id="@+id/operand1TextView"
+                android:layout_width="200sp"
+                android:layout_height="200sp"
+                android:layout_marginEnd="70sp"
+                android:text="@string/operand1"
+                android:gravity="center"
+                android:textSize="50sp" />
         </LinearLayout>
+
         <LinearLayout
-            android:orientation="vertical"
-            android:gravity="center"
+            android:id="@+id/middle_layout"
+            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="0sp"
-            android:layout_weight="0.6" >
-            <EditText
-                android:id="@+id/answerEditText"
-                android:layout_width="280dp"
-                android:layout_height="55dp"
-                android:layout_marginTop="4dp"
-                android:hint="@string/answer_hint"
-                android:inputType="number"
-                app:layout_constraintEnd_toStartOf="@+id/submitButton"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/generateButton" />
-            <Button
-                android:id="@+id/submitButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="16dp"
-                android:text="@string/submit"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/generateButton" />
+            android:gravity="end|center_vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/h_guideline1"
+            app:layout_constraintBottom_toTopOf="@+id/h_guideline2" >
+            <TextView
+                android:id="@+id/operatorTextView"
+                android:layout_width="100sp"
+                android:layout_height="100sp"
+                android:text="@string/operator"
+                android:gravity="center"
+                android:textSize="50sp" />
+            <TextView
+                android:id="@+id/operand2TextView"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_marginEnd="70sp"
+                android:text="@string/operand2"
+                android:textSize="50sp"
+                android:gravity="center" />
         </LinearLayout>
-    </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <LinearLayout
+            android:id="@+id/bottom_layout"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="0sp"
+            android:gravity="center"
+            android:weightSum="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/h_guideline2"
+            app:layout_constraintBottom_toTopOf="@+id/h_guideline3">
+            <LinearLayout
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="0sp"
+                android:layout_weight="0.4" >
+                <Button
+                    android:id="@+id/generateButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/generate"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.497"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.617" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="0sp"
+                android:layout_weight="0.6" >
+                <EditText
+                    android:id="@+id/answerEditText"
+                    android:layout_width="280dp"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="4dp"
+                    android:hint="@string/answer_hint"
+                    android:inputType="number"
+                    app:layout_constraintEnd_toStartOf="@+id/submitButton"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/generateButton" />
+                <Button
+                    android:id="@+id/submitButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="16dp"
+                    android:text="@string/submit"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/generateButton" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
