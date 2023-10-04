@@ -12,13 +12,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.33" />
+        app:layout_constraintGuide_percent="0.3" />
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h_guideline2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.66" />
+        app:layout_constraintGuide_percent="0.6" />
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h_guideline3"
         android:layout_width="wrap_content"
@@ -40,8 +40,8 @@
             android:id="@+id/operand1TextView"
             android:layout_width="200sp"
             android:layout_height="200sp"
-            android:layout_marginRight="70sp"
-            android:text="Num1"
+            android:layout_marginEnd="70sp"
+            android:text="@string/operand1"
             android:gravity="center"
             android:textSize="50sp" />
     </LinearLayout>
@@ -60,15 +60,15 @@
             android:id="@+id/operatorTextView"
             android:layout_width="100sp"
             android:layout_height="100sp"
-            android:text="+"
+            android:text="@string/operator"
             android:gravity="center"
             android:textSize="50sp" />
         <TextView
             android:id="@+id/operand2TextView"
             android:layout_width="200dp"
             android:layout_height="200dp"
-            android:layout_marginRight="70sp"
-            android:text="Num2"
+            android:layout_marginEnd="70sp"
+            android:text="@string/operand2"
             android:textSize="50sp"
             android:gravity="center" />
     </LinearLayout>
@@ -94,7 +94,7 @@
                 android:id="@+id/generateButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Generate 10 random problems"
+                android:text="@string/generate"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.497"
@@ -113,7 +113,8 @@
                 android:layout_width="280dp"
                 android:layout_height="55dp"
                 android:layout_marginTop="4dp"
-                android:hint="Enter your answer"
+                android:hint="@string/answer_hint"
+                android:inputType="number"
                 app:layout_constraintEnd_toStartOf="@+id/submitButton"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -124,7 +125,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="16dp"
-                android:text="Submit"
+                android:text="@string/submit"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/generateButton" />
         </LinearLayout>

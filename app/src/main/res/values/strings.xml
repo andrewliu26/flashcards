@@ -4,4 +4,10 @@
     <string name="password">Password</string>
     <string name="flashcard_app">Flashcard App</string>
     <string name="login">Login</string>
+    <string name="operand1">Num 1</string>
+    <string name="operand2">Num 2</string>
+    <string name="operator">+</string>
+    <string name="generate">Generate 10 Random Problems</string>
+    <string name="answer_hint">Enter your answer</string>
+    <string name="submit">Submit</string>
 </resources>
