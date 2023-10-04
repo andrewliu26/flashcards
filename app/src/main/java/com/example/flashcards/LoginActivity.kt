@@ -1,5 +1,6 @@
 package com.example.flashcards
 
+import android.content.Intent
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -20,7 +21,9 @@ class LoginActivity : AppCompatActivity() {
             val password = passwordEditText.text.toString()
 
             if (username == "admin" && password == "admin") {
-
+                val intent = Intent(this, MainActivity::class.java)
+                intent.putExtra("username", username)
+                startActivity(intent)
             } else {
                 Toast.makeText(this, "Incorrect", Toast.LENGTH_SHORT).show()
             }
