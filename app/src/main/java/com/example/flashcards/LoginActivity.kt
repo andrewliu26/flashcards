@@ -24,6 +24,7 @@ class LoginActivity : AppCompatActivity() {
                 val intent = Intent(this, FlashCardActivity::class.java)
                 intent.putExtra("username", username)
                 startActivity(intent)
+                finish()
             } else {
                 Toast.makeText(this, "Incorrect", Toast.LENGTH_SHORT).show()
             }

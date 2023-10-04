@@ -25,14 +25,23 @@ class FlashCardActivity : AppCompatActivity() {
         val submitButton = findViewById<Button>(R.id.submitButton)
         val answerEditText = findViewById<EditText>(R.id.answerEditText)
 
+        // Initially disable the submit button
+        submitButton.isEnabled = false
+
         generateButton.setOnClickListener {
             problems = Problem.generateProblems() as ArrayList<Problem>
             currentProblemIndex = 0
+            score = 0
             displayProblem()
             generateButton.isEnabled = false
+            submitButton.isEnabled = true
         }
 
         submitButton.setOnClickListener {
+            if (problems.isEmpty()) {
+                Toast.makeText(this, "Please generate problems first!", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
             val userAnswer = answerEditText.text.toString().toIntOrNull()
 
             if (userAnswer != null && userAnswer == problems[currentProblemIndex].getAnswer()) {
@@ -44,6 +53,7 @@ class FlashCardActivity : AppCompatActivity() {
             if (currentProblemIndex >= problems.size) {
                 Toast.makeText(this, "Score: $score out of 10", Toast.LENGTH_LONG).show()
                 generateButton.isEnabled = true
+                submitButton.isEnabled = false
             } else {
                 displayProblem()
             }
