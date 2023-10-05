@@ -25,7 +25,7 @@
             android:name=".FlashCardActivity"
             android:windowSoftInputMode="adjustResize"
             android:configChanges="keyboardHidden|screenSize|screenLayout"
-            android:exported="true">
+            android:exported="false">
         </activity>
     </application>
 
