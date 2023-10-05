@@ -15,22 +15,46 @@ class FlashCardActivity : AppCompatActivity() {
     private var score = 0
     private var currentProblemIndex = 0
 
+    private lateinit var operand1TextView: TextView
+    private lateinit var operand2TextView: TextView
+    private lateinit var operatorTextView: TextView
+    private lateinit var answerEditText: EditText
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_flash_card)
 
-        val welcomeToast = Toast.makeText(this, "Welcome ${intent.getStringExtra("username")}", Toast.LENGTH_SHORT)
-        welcomeToast.show()
+        operand1TextView = findViewById(R.id.operand1TextView)
+        operand2TextView = findViewById(R.id.operand2TextView)
+        operatorTextView = findViewById(R.id.operatorTextView)
+        answerEditText = findViewById(R.id.answerEditText)
 
         val generateButton = findViewById<Button>(R.id.generateButton)
         val submitButton = findViewById<Button>(R.id.submitButton)
-        val answerEditText = findViewById<EditText>(R.id.answerEditText)
 
-        // Initially disable the submit button
-        submitButton.isEnabled = false
+        if (savedInstanceState != null) {
+            val problemsArray = savedInstanceState.getIntArray("problemsArray")
+            problems = ArrayList(problemsArray?.map { Problem.fromInt(it) } ?: listOf())
+            score = savedInstanceState.getInt("score")
+            currentProblemIndex = savedInstanceState.getInt("currentProblemIndex")
+//            problems = savedInstanceState.getSerializable("problems") as ArrayList<Problem>
+
+            if (problems.isNotEmpty()) {
+                displayProblem()
+            }
+
+            generateButton.isEnabled = currentProblemIndex >= problems.size
+            submitButton.isEnabled = currentProblemIndex < problems.size
+        } else {
+            val welcomeToast = Toast.makeText(this, "Welcome ${intent.getStringExtra("username")}", Toast.LENGTH_SHORT)
+            welcomeToast.show()
+
+            generateButton.isEnabled = true
+            submitButton.isEnabled = false
+        }
 
         generateButton.setOnClickListener {
-            problems = Problem.generateProblems() as ArrayList<Problem>
+            problems = Problem.generateProblems(10) as ArrayList<Problem>
             currentProblemIndex = 0
             score = 0
             displayProblem()
@@ -43,8 +67,8 @@ class FlashCardActivity : AppCompatActivity() {
                 Toast.makeText(this, "Please generate problems first!", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-            val userAnswer = answerEditText.text.toString().toIntOrNull()
 
+            val userAnswer = answerEditText.text.toString().toIntOrNull()
             if (userAnswer != null && userAnswer == problems[currentProblemIndex].getAnswer()) {
                 score++
             }
@@ -62,17 +86,24 @@ class FlashCardActivity : AppCompatActivity() {
     }
 
     private fun displayProblem() {
+        if (currentProblemIndex >= problems.size) {
+            return
+        }
+
         val currentProblem = problems[currentProblemIndex]
-
-        val operand1TextView = findViewById<TextView>(R.id.operand1TextView)
-        val operand2TextView = findViewById<TextView>(R.id.operand2TextView)
-        val operatorTextView = findViewById<TextView>(R.id.operatorTextView)
-        val answerEditText = findViewById<EditText>(R.id.answerEditText)
-
         operand1TextView.text = currentProblem.operand1.toString()
         operand2TextView.text = currentProblem.operand2.toString()
         operatorTextView.text = if (currentProblem.isAddition) "+" else "-"
         answerEditText.text.clear()
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        val problemsArray = problems.map { it.toInt() }.toIntArray()
+        outState.putIntArray("problemsArray", problemsArray)
+        outState.putInt("score", score)
+        outState.putInt("currentProblemIndex", currentProblemIndex)
+//        outState.putSerializable("problems", problems)
     }
 
     internal data class Problem(val isAddition: Boolean, val operand1: Int, val operand2: Int) {
@@ -80,11 +111,32 @@ class FlashCardActivity : AppCompatActivity() {
             return if (isAddition) operand1 + operand2 else operand1 - operand2
         }
 
-        companion object {
-            fun generateProblems(): List<Problem> {
-                val problems = mutableListOf<Problem>()
+        fun toInt() : Int {
+            val op1 = String.format("%02d", operand1)
+            val op2 = String.format("%02d", operand2)
 
-                val half = 5
+            val operationInt = if (isAddition) 0 else 1
+
+            return "$op1$op2$operationInt".toInt()
+        }
+
+
+
+
+        companion object {
+            fun fromInt(intInput: Int): Problem {
+                val strValue = intInput.toString()
+
+                val operand1 = strValue.substring(0, 2).toInt()
+                val operand2 = strValue.substring(2, 4).toInt()
+                val isAddition = strValue.last() == '0'
+
+                return Problem(isAddition, operand1, operand2)
+            }
+            fun generateProblems(count: Int ): List<Problem> {
+                val problems = mutableListOf<Problem>()
+                val half = count / 2
+
                 for (i in 0 until half) {
                     val operand1 = Random.nextInt(1, 100)
                     val operand2 = Random.nextInt(1, 21)

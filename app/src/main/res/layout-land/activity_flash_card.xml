@@ -105,7 +105,7 @@
             android:layout_margin="20sp"
             android:hint="@string/answer_hint" />
         <Button
-            android:id="@+id/submitBtn"
+            android:id="@+id/submitButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8sp"
