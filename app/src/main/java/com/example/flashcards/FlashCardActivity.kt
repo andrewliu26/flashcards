@@ -74,7 +74,7 @@ class FlashCardActivity : AppCompatActivity() {
         answerEditText.text.clear()
     }
 
-    private data class Problem(val isAddition: Boolean, val operand1: Int, val operand2: Int) {
+    internal data class Problem(val isAddition: Boolean, val operand1: Int, val operand2: Int) {
         fun getAnswer(): Int {
             return if (isAddition) operand1 + operand2 else operand1 - operand2
         }
