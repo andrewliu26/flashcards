@@ -1,6 +1,5 @@
 package com.example.flashcards
 
-import android.content.res.Configuration
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -16,26 +15,9 @@ class FlashCardActivity : AppCompatActivity() {
     private var score = 0
     private var currentProblemIndex = 0
 
-    override fun onConfigurationChanged(newConfig: Configuration) {
-        super.onConfigurationChanged(newConfig)
-        // Check the new orientation and apply the appropriate layout
-        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            setContentView(R.layout.activity_flash_card)
-        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
-            setContentView(R.layout.activity_flash_card)
-        }
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_flash_card)
-
-        val currentOrientation = resources.configuration.orientation
-        if (currentOrientation == Configuration.ORIENTATION_LANDSCAPE) {
-            setContentView(R.layout.activity_flash_card)
-        } else if (currentOrientation == Configuration.ORIENTATION_PORTRAIT) {
-            setContentView(R.layout.activity_flash_card)
-        }
 
         val welcomeToast = Toast.makeText(this, "Welcome ${intent.getStringExtra("username")}", Toast.LENGTH_SHORT)
         welcomeToast.show()
