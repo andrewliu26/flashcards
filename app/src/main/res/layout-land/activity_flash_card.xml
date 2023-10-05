@@ -42,7 +42,7 @@
             android:layout_height="150sp"
             android:layout_marginTop="30sp"
             android:gravity="center"
-            android:text="Num1"
+            android:text="@string/operand1"
             android:textSize="50sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="parent"
@@ -55,7 +55,7 @@
             android:layout_height="100sp"
             android:layout_marginTop="30sp"
             android:gravity="center"
-            android:text="+"
+            android:text="@string/operator"
             android:textSize="50sp" />
 
         <TextView
@@ -64,7 +64,7 @@
             android:layout_height="150sp"
             android:layout_marginTop="30sp"
             android:gravity="center"
-            android:text="Num2"
+            android:text="@string/operand2"
             android:textSize="50sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="parent"
@@ -85,7 +85,7 @@
             android:id="@+id/generateButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Generate 10 random problems" />
+            android:text="@string/generate" />
     </LinearLayout>
     <LinearLayout
         android:id="@+id/bottom_layout"
@@ -99,16 +99,17 @@
         app:layout_constraintBottom_toTopOf="@+id/h_guideline3" >
         <EditText
             android:id="@+id/answerEditText"
+            android:inputType="number"
             android:layout_width="280sp"
             android:layout_height="55sp"
             android:layout_margin="20sp"
-            android:hint="Enter your answer" />
+            android:hint="@string/answer_hint" />
         <Button
             android:id="@+id/submitBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8sp"
-            android:text="Submit" />
+            android:text="@string/submit" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
