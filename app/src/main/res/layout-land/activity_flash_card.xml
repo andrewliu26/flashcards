@@ -6,71 +6,110 @@
     android:layout_height="match_parent"
     tools:context=".FlashCardActivity">
 
-
-    <TextView
-        android:id="@+id/operand1TextView"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="60dp"
-        android:gravity="center"
-        android:text="Num1"
-        android:textSize="50sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/operand2TextView"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:gravity="center"
-        android:text="Num2"
-        android:textSize="50sp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="445dp"
-        tools:layout_editor_absoluteY="60dp" />
-
-    <TextView
-        android:id="@+id/operatorTextView"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:gravity="center"
-        android:text="+"
-        android:textSize="50sp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="295dp"
-        tools:layout_editor_absoluteY="90dp" />
-
-    <EditText
-        android:id="@+id/answerEditText"
-        android:layout_width="280dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="20dp"
-        android:hint="Enter your answer"
-        app:layout_constraintEnd_toStartOf="@+id/submitBtn"
-        app:layout_constraintHorizontal_bias="0.9"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/generateButton" />
-
-    <Button
-        android:id="@+id/generateButton"
+    <!-- Horizontal guidelines -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/h_guideline1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Generate 10 random problems"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.511"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="233dp"
-        tools:ignore="MissingConstraints" />
-
-    <Button
-        android:id="@+id/submitBtn"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/h_guideline2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="128dp"
-        android:text="Submit"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/generateButton" />
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.7" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/h_guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="1" />
+    
+    <LinearLayout
+        android:id="@+id/top_layout"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0sp"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/h_guideline1" >
+        <TextView
+            android:id="@+id/operand1TextView"
+            android:layout_width="150sp"
+            android:layout_height="150sp"
+            android:layout_marginTop="30sp"
+            android:gravity="center"
+            android:text="@string/operand1"
+            android:textSize="50sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/h_guideline1" />
+
+        <TextView
+            android:id="@+id/operatorTextView"
+            android:layout_width="100sp"
+            android:layout_height="100sp"
+            android:layout_marginTop="30sp"
+            android:gravity="center"
+            android:text="@string/operator"
+            android:textSize="50sp" />
+
+        <TextView
+            android:id="@+id/operand2TextView"
+            android:layout_width="150sp"
+            android:layout_height="150sp"
+            android:layout_marginTop="30sp"
+            android:gravity="center"
+            android:text="@string/operand2"
+            android:textSize="50sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/h_guideline1" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/middle_layout"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0sp"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/h_guideline1"
+        app:layout_constraintBottom_toTopOf="@+id/h_guideline2" >
+        <Button
+            android:id="@+id/generateButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/generate" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/bottom_layout"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0sp"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/h_guideline2"
+        app:layout_constraintBottom_toTopOf="@+id/h_guideline3" >
+        <EditText
+            android:id="@+id/answerEditText"
+            android:inputType="number"
+            android:layout_width="280sp"
+            android:layout_height="55sp"
+            android:layout_margin="20sp"
+            android:hint="@string/answer_hint" />
+        <Button
+            android:id="@+id/submitBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8sp"
+            android:text="@string/submit" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
